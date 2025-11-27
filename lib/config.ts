@@ -32,8 +32,8 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     icon: "circle-question",
   },
   {
-    label: "😬 Ortodoncia",
-    prompt: "¿Tienen tratamientos de brackets u ortodoncia?",
+    label: "📞 Llamar Ahora",
+    prompt: "¿Me podrían pasar su número para marcarles?",
     icon: "circle-question",
   },
   {
