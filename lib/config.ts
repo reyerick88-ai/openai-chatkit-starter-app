@@ -37,8 +37,8 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     icon: "circle-question",
   },
   {
-    label: "🆘 Urgencias",
-    prompt: "Tengo un dolor muy fuerte, ¿atienden urgencias?",
+    label: "📱 WhatsApp",
+    prompt: "Hola, me gustaría contactarlos directamente por WhatsApp. ¿Me comparten el enlace?",
     icon: "circle-question",
   },
   {
