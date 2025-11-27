@@ -7,14 +7,14 @@ export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
-    label: "Precios",
+    label: "💰 Precios",
     prompt: "¿Cuáles son los costos de los tratamientos?",
-    icon: "circle-dollar", // Icono opcional
+    icon: "circle-question",  // <--- Cambiamos "circle-dollar" por este que sí funciona
   },
   {
-    label: "Agendar Cita",
+    label: "📅 Agendar Cita",
     prompt: "Quisiera información para agendar una cita.",
-    icon: "calendar",
+    icon: "circle-question",  // <--- Cambiamos "calendar" por este también
   },
 ];
 
