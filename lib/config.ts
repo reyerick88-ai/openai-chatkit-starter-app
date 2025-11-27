@@ -8,16 +8,55 @@ export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "💰 Precios",
-    prompt: "¿Cuáles son los costos de los tratamientos?",
-    icon: "circle-question",  // <--- Cambiamos "circle-dollar" por este que sí funciona
+    prompt: "¿Cuáles son los costos de los tratamientos básicos?",
+    icon: "circle-question",
   },
   {
     label: "📅 Agendar Cita",
     prompt: "Quisiera información para agendar una cita.",
-    icon: "circle-question",  // <--- Cambiamos "calendar" por este también
+    icon: "circle-question",
+  },
+  {
+    label: "📍 Ubicación",
+    prompt: "¿Dónde están ubicados? ¿Me compartes la dirección?",
+    icon: "circle-question",
+  },
+  {
+    label: "⏰ Horarios",
+    prompt: "¿Cuáles son sus horarios de atención?",
+    icon: "circle-question",
+  },
+  {
+    label: "🦷 Blanqueamiento",
+    prompt: "Quiero saber más sobre el blanqueamiento dental.",
+    icon: "circle-question",
+  },
+  {
+    label: "😬 Ortodoncia",
+    prompt: "¿Tienen tratamientos de brackets u ortodoncia?",
+    icon: "circle-question",
+  },
+  {
+    label: "🆘 Urgencias",
+    prompt: "Tengo un dolor muy fuerte, ¿atienden urgencias?",
+    icon: "circle-question",
+  },
+  {
+    label: "💳 Formas de Pago",
+    prompt: "¿Aceptan tarjetas de crédito o seguros?",
+    icon: "circle-question",
+  },
+  {
+    label: "📞 Hablar con Humano",
+    prompt: "Necesito hablar con una persona real, por favor.",
+    icon: "circle-question",
+  },
+  {
+    label: "📝 Primera Vez",
+    prompt: "Es mi primera vez ahí, ¿qué necesito llevar?",
+    icon: "circle-question",
   },
 ];
-
 export const PLACEHOLDER_INPUT = "Instituto NeuroInteligente";
 
 export const GREETING = "¡Hola! Soy Neuro, tu asistente dental. ¿En qué puedo ayudarte hoy?";
