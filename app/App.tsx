@@ -20,11 +20,11 @@ export default function App() {
   }, []);
 
   return (
-    /* 1. AQUÍ CAMBIAMOS EL FONDO AL AZUL OSCURO DE TU MARCA */
-    <main className="flex min-h-screen flex-col items-center justify-end" style={{ backgroundColor: '#172554' }}>
+    /* CAMBIADO A VERDE ESMERALDA (#064e3b) */
+    <main className="flex min-h-screen flex-col items-center justify-end" style={{ backgroundColor: '#064e3b' }}>
       <div className="mx-auto w-full max-w-5xl">
         
-        {/* 2. AQUÍ AGREGAMOS TU LOGO */}
+        {/* LOGO (Se mantiene igual) */}
         <div className="flex justify-center mb-6">
           <img 
             src="/LOGO-NEURO.jpeg" 
@@ -33,7 +33,6 @@ export default function App() {
           />
         </div>
 
-        {/* 3. EL CHAT SE QUEDA IGUAL */}
         <ChatKitPanel
           theme={scheme}
           onWidgetAction={handleWidgetAction}
