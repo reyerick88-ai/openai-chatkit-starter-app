@@ -20,8 +20,20 @@ export default function App() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-end bg-slate-100 dark:bg-slate-950">
+    /* 1. AQUÍ CAMBIAMOS EL FONDO AL AZUL OSCURO DE TU MARCA */
+    <main className="flex min-h-screen flex-col items-center justify-end" style={{ backgroundColor: '#172554' }}>
       <div className="mx-auto w-full max-w-5xl">
+        
+        {/* 2. AQUÍ AGREGAMOS TU LOGO */}
+        <div className="flex justify-center mb-6">
+          <img 
+            src="/LOGO-NEURO.jpeg" 
+            alt="Instituto NeuroInteligente" 
+            className="h-32 w-auto rounded-full shadow-lg border-4 border-white/10" 
+          />
+        </div>
+
+        {/* 3. EL CHAT SE QUEDA IGUAL */}
         <ChatKitPanel
           theme={scheme}
           onWidgetAction={handleWidgetAction}
