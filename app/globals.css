@@ -32,3 +32,52 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+/* --- ESTILOS 3D PARA LOS BOTONES DEL CHAT (VERSIÓN FUERTE) --- */
+
+/* 1. Atrapamos los botones de la lista */
+main ul button,
+main ol button,
+div[class*="thread"] button,
+div[class*="list"] button {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;  /* Borde gris azulado */
+  border-radius: 12px !important;
+  padding: 16px 20px !important;         /* Botones más gorditos */
+  margin-bottom: 12px !important;        /* Espacio entre ellos */
+  width: 100% !important;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;                  /* Espacio entre icono y texto */
+  
+  /* Sombra 3D */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* 2. Efecto al pasar el mouse (Hover) */
+main ul button:hover,
+main ol button:hover,
+div[class*="thread"] button:hover,
+div[class*="list"] button:hover {
+  transform: translateY(-4px) !important;  /* Se levanta más */
+  border-color: #064e3b !important;        /* Borde Verde Neuro */
+  background-color: #f0fdf4 !important;    /* Fondo verdecito claro */
+  cursor: pointer !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 3. PROTECCIÓN: Evitar que esto afecte al botón de "Enviar" o "Adjuntar" de abajo */
+form button,
+div[class*="composer"] button,
+button[type="submit"] {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 8px !important;
+  margin: 0 !important;
+  transform: none !important;
+}
