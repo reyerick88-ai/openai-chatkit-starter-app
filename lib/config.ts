@@ -44,7 +44,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
   label: "👉 🦷 Cuidados tras la cita",
   prompt: "Acabo de salir de mi consulta dental y tengo dudas sobre los cuidados que debo seguir.",
-  icon: "clipboard-list",
+  icon: "circle-question",
 },
   {
     label: "👉 📞 Hablar con Humano",
@@ -59,7 +59,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
   label: "👉 💊 Tengo dolor o molestia",
   prompt: "Tengo dolor después del tratamiento que me hicieron hoy. ¿Es normal o qué puedo tomar?",
-  icon: "triangle-exclamation",
+  icon: "circle-question",
 },
 ];
 export const PLACEHOLDER_INPUT = "Instituto NeuroInteligente";
