@@ -33,51 +33,29 @@ body {
   font-family: var(--font-sans);
 }
 
-/* --- ESTILOS 3D PARA LOS BOTONES DEL CHAT (VERSIÓN FUERTE) --- */
+/* --- ESTILO DE CAMPO SELECCIONABLE (SIMPLE Y FUNCIONAL) --- */
 
-/* 1. Atrapamos los botones de la lista */
-main ul button,
-main ol button,
-div[class*="thread"] button,
-div[class*="list"] button {
-  background-color: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;  /* Borde gris azulado */
-  border-radius: 12px !important;
-  padding: 16px 20px !important;         /* Botones más gorditos */
-  margin-bottom: 12px !important;        /* Espacio entre ellos */
-  width: 100% !important;
-  text-align: left !important;
+/* Aplica a TODOS los botones dentro del área principal, EXCEPTO al de enviar mensaje */
+main button:not([type="submit"]) {
+  /* Hacemos que parezca una casilla de opción */
+  background-color: #ffffff !important;      /* Fondo blanco */
+  border: 1px solid #94a3b8 !important;      /* Borde gris visible */
+  border-radius: 8px !important;             /* Esquinas redondeadas */
+  padding: 12px 16px !important;             /* Espacio interno cómodo */
+  margin-top: 6px !important;                /* Espacio entre opciones */
+  margin-bottom: 6px !important;
+  width: 100% !important;                    /* Ancho completo */
+  text-align: left !important;               /* Texto alineado a la izquierda */
+  cursor: pointer !important;                /* Muestra la manita al pasar el mouse */
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;                  /* Espacio entre icono y texto */
-  
-  /* Sombra 3D */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-              0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-  
-  transition: all 0.2s ease-in-out !important;
+  gap: 10px !important;
 }
 
-/* 2. Efecto al pasar el mouse (Hover) */
-main ul button:hover,
-main ol button:hover,
-div[class*="thread"] button:hover,
-div[class*="list"] button:hover {
-  transform: translateY(-4px) !important;  /* Se levanta más */
-  border-color: #064e3b !important;        /* Borde Verde Neuro */
-  background-color: #f0fdf4 !important;    /* Fondo verdecito claro */
-  cursor: pointer !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* 3. PROTECCIÓN: Evitar que esto afecte al botón de "Enviar" o "Adjuntar" de abajo */
-form button,
-div[class*="composer"] button,
-button[type="submit"] {
-  box-shadow: none !important;
-  background-color: transparent !important;
-  border: none !important;
-  padding: 8px !important;
-  margin: 0 !important;
-  transform: none !important;
+/* Efecto visual cuando el usuario pasa el mouse */
+main button:not([type="submit"]):hover {
+  background-color: #ecfdf5 !important;      /* Fondo verde muy pálido */
+  border-color: #064e3b !important;          /* El borde se pone verde oscuro */
+  border-width: 2px !important;              /* El borde se hace más grueso */
+  padding: 11px 15px !important;             /* Ajuste para que no "brinque" por el borde grueso */
 }
