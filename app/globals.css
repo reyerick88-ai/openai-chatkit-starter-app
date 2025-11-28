@@ -32,3 +32,32 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+/* --- ESTILOS PERSONALIZADOS PARA BOTONES DEL CHAT (Efecto 3D) --- */
+
+/* Esto busca los botones de la lista de sugerencias */
+div[role="listitem"] button {
+  background-color: #ffffff !important;     /* Fondo blanco puro */
+  border: 1px solid #e2e8f0 !important;     /* Borde gris sutil */
+  border-radius: 12px !important;           /* Bordes redondeados */
+  padding: 14px 18px !important;            /* Más espacio para que se vea grande */
+  margin-bottom: 10px !important;           /* Separación entre botones */
+  width: 100% !important;                   /* Que ocupen todo el ancho */
+  text-align: left !important;
+  
+  /* Aquí está la magia del 3D (Sombra suave) */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  
+  transition: all 0.2s ease-in-out !important; /* Animación suave */
+}
+
+/* Efecto cuando pasas el mouse por encima (Hover) */
+div[role="listitem"] button:hover {
+  transform: translateY(-3px) !important;   /* El botón "flota" hacia arriba */
+  border-color: #064e3b !important;         /* Se pone del verde de tu marca */
+  background-color: #f0fdf4 !important;     /* Fondo verde muy pálido */
+  
+  /* La sombra crece para dar efecto de altura */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
