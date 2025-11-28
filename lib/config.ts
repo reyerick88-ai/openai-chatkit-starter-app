@@ -42,10 +42,10 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     icon: "circle-question",
   },
   {
-    label: "👉 Dudas Despues de Visita",
-    prompt: "¿Aceptan tarjetas de crédito o seguros?",
-    icon: "circle-question",
-  },
+  label: "👉 🦷 Cuidados tras la cita",
+  prompt: "Acabo de salir de mi consulta dental y tengo dudas sobre los cuidados que debo seguir.",
+  icon: "clipboard-list",
+},
   {
     label: "👉 📞 Hablar con Humano",
     prompt: "Necesito hablar con una persona real, por favor.",
@@ -56,6 +56,11 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     prompt: "Es mi primera vez ahí, ¿qué necesito llevar?",
     icon: "circle-question",
   },
+  {
+  label: "👉 💊 Tengo dolor o molestia",
+  prompt: "Tengo dolor después del tratamiento que me hicieron hoy. ¿Es normal o qué puedo tomar?",
+  icon: "triangle-exclamation",
+},
 ];
 export const PLACEHOLDER_INPUT = "Instituto NeuroInteligente";
 
