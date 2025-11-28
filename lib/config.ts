@@ -73,7 +73,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       level: 1,
     },
   },
-  radius: "full",
+  radius: "round",
   // Add other theme options here
   // chatkit.studio/playground to explore config options
 });
