@@ -6,65 +6,16 @@ export const WORKFLOW_ID =
 export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
+ 
   {
-    label: "👉 💰 Precios",
-    prompt: "¿Cuáles son los costos de los tratamientos básicos?",
-    icon: "circle-question",
+    label: "👉 📝 Analisis de Documentos PDF",
+    prompt: "Necesito que me ayudes a analizar el siguiente documento",
   },
-  {
-    label: "👉 📅 Agendar Cita",
-    prompt: "Quisiera información para agendar una cita.",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 📍 Ubicación",
-    prompt: "¿Dónde están ubicados? ¿Me compartes la dirección?",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 ⏰ Horarios",
-    prompt: "¿Cuáles son sus horarios de atención?",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 🦷 Blanqueamiento",
-    prompt: "Quiero saber más sobre el blanqueamiento dental.",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 📞 Llamar Ahora",
-    prompt: "¿Me podrían pasar su número para marcarles?",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 📱 WhatsApp",
-    prompt: "Hola, me gustaría contactarlos directamente por WhatsApp. ¿Me comparten el enlace?",
-    icon: "circle-question",
-  },
-  {
-  label: "👉 🦷 Cuidados tras la cita",
-  prompt: "Acabo de salir de mi consulta dental y tengo dudas sobre los cuidados que debo seguir.",
-  icon: "circle-question",
-},
-  {
-    label: "👉 📞 Hablar con Humano",
-    prompt: "Necesito hablar con una persona real, por favor.",
-    icon: "circle-question",
-  },
-  {
-    label: "👉 📝 Primera Vez",
-    prompt: "Es mi primera vez ahí, ¿qué necesito llevar?",
-    icon: "circle-question",
-  },
-  {
-  label: "👉 💊 Tengo dolor o molestia",
-  prompt: "Tengo dolor después del tratamiento que me hicieron hoy. ¿Es normal o qué puedo tomar?",
-  icon: "circle-question",
-},
+  
 ];
 export const PLACEHOLDER_INPUT = "Instituto NeuroInteligente";
 
-export const GREETING = "¡Hola! Soy Neuro, tu asistente dental. ¿En qué puedo ayudarte hoy?";
+export const GREETING = "¡Hola! Soy Neuro, tu asistente dental experto en analisis de datos. ¿En qué puedo ayudarte hoy?";
 
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
   color: {
