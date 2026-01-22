@@ -4,6 +4,14 @@ import { useCallback } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+type ToolCall = {
+  name: string;
+  params?: unknown;
+  arguments?: unknown;
+};
+
+type ToolResult = Record<string, unknown>;
+
 export default function App() {
   const { scheme, setScheme } = useColorScheme();
 
@@ -19,39 +27,38 @@ export default function App() {
     }
   }, []);
 
-  // ✅ PUENTE: cuando el Agent Builder llame la Function `appendTransfer`,
-  // aquí se ejecuta realmente el POST hacia tu endpoint en Vercel.
-  const handleClientTool = useCallback(async (toolCall: any) => {
+  // ✅ PUENTE: ejecuta tools reales (sin usar any)
+  const handleClientTool = useCallback(async (toolCall: ToolCall): Promise<ToolResult> => {
     try {
-      if (!toolCall || !toolCall.name) {
-        return { ok: false, error: "INVALID_TOOL_CALL" };
-      }
+      if (!toolCall?.name) return { ok: false, error: "INVALID_TOOL_CALL" };
+
+      // Preferimos params; si viene arguments lo aceptamos también
+      const payload =
+        (toolCall.params ?? toolCall.arguments ?? {}) as Record<string, unknown>;
 
       if (toolCall.name === "appendTransfer") {
         const res = await fetch("/api/tools/appendTransfer", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(toolCall.params ?? toolCall.arguments ?? {}),
+          body: JSON.stringify(payload),
         });
 
-        const data = await res.json().catch(() => ({}));
+        const data = (await res.json().catch(() => ({}))) as ToolResult;
         return data;
       }
 
       return { ok: false, error: "UNKNOWN_TOOL", name: toolCall.name };
-    } catch (err: any) {
+    } catch (err) {
       return { ok: false, error: String(err) };
     }
   }, []);
 
   return (
-    /* CAMBIADO A VERDE ESMERALDA (#064e3b) */
     <main
       className="flex min-h-screen flex-col items-center justify-end"
       style={{ backgroundColor: "#064e3b" }}
     >
       <div className="mx-auto w-full max-w-5xl">
-        {/* LOGO (Se mantiene igual) */}
         <div className="flex justify-center mb-6">
           <img
             src="/LOGO-NEURO.jpeg"
@@ -65,7 +72,6 @@ export default function App() {
           onWidgetAction={handleWidgetAction}
           onResponseEnd={handleResponseEnd}
           onThemeRequest={setScheme}
-          // ✅ AGREGA ESTA LÍNEA:
           onClientTool={handleClientTool}
         />
       </div>
