@@ -8,9 +8,17 @@ export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
  
   {
-    label: "👉 📝 Analisis de Documentos PDF",
-    prompt: "Necesito que me ayudes a analizar el siguiente documento",
+    label: "📸 Registrar transferencia (captura)",
+    prompt: "Voy a registrar una transferencia. Te voy a subir UNA captura."
   },
+  {
+    label: "🧾 Registrar varias capturas (batch)",
+    prompt: "Voy a subir VARIAS capturas de transferencias (una por una)."
+  },
+  {
+    label: "🔗 Enviar link de pago",
+    prompt: "Pásame el link de pago."
+  }
   
 ];
 export const PLACEHOLDER_INPUT = "Instituto NeuroInteligente";
