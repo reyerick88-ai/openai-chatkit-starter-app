@@ -12,6 +12,10 @@ type ToolCall = {
 
 type ToolResult = Record<string, unknown>;
 
+function isRecord(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null && !Array.isArray(v);
+}
+
 export default function App() {
   const { scheme, setScheme } = useColorScheme();
 
@@ -27,31 +31,46 @@ export default function App() {
     }
   }, []);
 
-  // ✅ PUENTE: ejecuta tools reales (sin usar any)
-  const handleClientTool = useCallback(async (toolCall: ToolCall): Promise<ToolResult> => {
-    try {
-      if (!toolCall?.name) return { ok: false, error: "INVALID_TOOL_CALL" };
+  // ✅ PUENTE: ejecuta tools reales
+  const handleClientTool = useCallback(
+    async (toolCall: ToolCall): Promise<ToolResult> => {
+      try {
+        if (!toolCall?.name) return { ok: false, error: "INVALID_TOOL_CALL" };
 
-      // Preferimos params; si viene arguments lo aceptamos también
-      const payload =
-        (toolCall.params ?? toolCall.arguments ?? {}) as Record<string, unknown>;
+        const payload = isRecord(toolCall.params)
+          ? toolCall.params
+          : isRecord(toolCall.arguments)
+          ? toolCall.arguments
+          : {};
 
-      if (toolCall.name === "appendTransfer") {
-        const res = await fetch("/api/tools/appendTransfer", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+        if (toolCall.name === "appendTransfer") {
+          const res = await fetch("/api/tools/appendTransfer", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
 
-        const data = (await res.json().catch(() => ({}))) as ToolResult;
-        return data;
+          const data = (await res.json().catch(() => ({}))) as ToolResult;
+
+          // 🔥 CLAVE: valida HTTP + data.ok
+          if (!res.ok || data.ok !== true) {
+            return {
+              ok: false,
+              error: String(data.error ?? `HTTP_${res.status}`),
+              raw: data,
+            };
+          }
+
+          return data;
+        }
+
+        return { ok: false, error: "UNKNOWN_TOOL", name: toolCall.name };
+      } catch (err) {
+        return { ok: false, error: String(err) };
       }
-
-      return { ok: false, error: "UNKNOWN_TOOL", name: toolCall.name };
-    } catch (err) {
-      return { ok: false, error: String(err) };
-    }
-  }, []);
+    },
+    []
+  );
 
   return (
     <main
