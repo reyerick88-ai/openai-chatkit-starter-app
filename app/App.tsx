@@ -31,20 +31,19 @@ export default function App() {
     }
   }, []);
 
-  // ✅ PUENTE: ejecuta tools reales
   const handleClientTool = useCallback(
     async (toolCall: ToolCall): Promise<ToolResult> => {
       try {
-        if (!toolCall?.name) return { ok: false, error: "INVALID_TOOL_CALL" };
+        const name = String(toolCall?.name ?? "");
+        if (!name) return { ok: false, error: "INVALID_TOOL_CALL" };
 
-        // Preferimos params; si viene arguments lo aceptamos también
-        const payload: Record<string, unknown> = isRecord(toolCall.params)
+        const payload = isRecord(toolCall.params)
           ? toolCall.params
           : isRecord(toolCall.arguments)
           ? toolCall.arguments
           : {};
 
-        if (toolCall.name === "appendTransfer") {
+        if (name === "appendTransfer") {
           const res = await fetch("/api/tools/appendTransfer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -53,11 +52,10 @@ export default function App() {
 
           const data = (await res.json().catch(() => ({}))) as ToolResult;
 
-          // 🔥 CLAVE: valida HTTP + data.ok (si falla, regresamos error real)
           if (!res.ok || data.ok !== true) {
             return {
               ok: false,
-              error: String((data as any)?.error ?? `HTTP_${res.status}`),
+              error: String(data.error ?? `HTTP_${res.status}`),
               status: res.status,
               raw: data,
             };
@@ -66,7 +64,7 @@ export default function App() {
           return data;
         }
 
-        return { ok: false, error: "UNKNOWN_TOOL", name: toolCall.name };
+        return { ok: false, error: "UNKNOWN_TOOL", name };
       } catch (err) {
         return { ok: false, error: String(err) };
       }
